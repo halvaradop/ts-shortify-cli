@@ -1,0 +1,17 @@
+{
+  "display": "Node 20",
+  "_version": "20.1.0",
+  "compilerOptions": {
+    "lib": ["ES2023"],
+    "module": "Node16",
+    "target": "es2022",
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "moduleResolution": "Node16"
+  },
+  "include": [
+    "src"
+  ]
+}

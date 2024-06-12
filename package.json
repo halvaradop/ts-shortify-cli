@@ -2,13 +2,15 @@
   "name": "ts-cli",
   "version": "0.0.1",
   "description": "CLI in TypeScript",
-  "main": "src/index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.js",
   "bin": {
-    "cli": "src/index.js"
+    "cli": "dist/index.js"
   },
   "scripts": {
     "build": "tsc",
-    "dev": "tsc -w"
+    "dev": "tsc -w",
+    "link-cli": "npm unlink ts-cli && npm link ts-cli"
   },
   "repository": {
     "type": "git",
@@ -28,5 +30,12 @@
   "homepage": "https://github.com/halvaradop/ts-cli#readme",
   "dependencies": {
     "commander": "^12.1.0"
-  }
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.2",
+    "typescript": "^5.4.5"
+  },
+  "files": [
+    "dist"
+  ]
 }

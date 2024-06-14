@@ -1,16 +1,17 @@
 {
-  "name": "ts-cli",
+  "name": "shortify-cli",
   "version": "0.0.1",
-  "description": "CLI in TypeScript",
+  "description": "An interactive CLI to shorten URLs on the web",
+  "private": "true",
   "main": "dist/index.js",
   "types": "dist/index.js",
   "bin": {
-    "cli": "dist/index.js"
+    "url": "dist/index.js"
   },
   "scripts": {
     "build": "tsc",
     "dev": "tsc -w",
-    "link-cli": "npm unlink ts-cli && npm link ts-cli"
+    "link-cli": "npm unlink shortify-cli && chmod +x dist/index.js && npm link shortify-cli"
   },
   "repository": {
     "type": "git",
@@ -19,8 +20,11 @@
   "keywords": [
     "typescript",
     "cli",
-    "cerminal",
-    "commander"
+    "terminal",
+    "commander",
+    "interactive",
+    "shortener",
+    "url"
   ],
   "author": "Hernan Alvarado <hernanvid123@gmail.com>",
   "license": "MIT",
@@ -33,6 +37,7 @@
   },
   "devDependencies": {
     "@types/node": "^20.14.2",
+    "dotenv": "^16.4.5",
     "typescript": "^5.4.5"
   },
   "files": [

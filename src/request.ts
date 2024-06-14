@@ -1,4 +1,4 @@
-import { ErrorRequest, Link, StatisticsAPI } from "./types"
+import { ErrorRequest, ShortenLink, StatisticsLink } from "./types"
 
 const SHORTENER_API_KEY = process.env.SHORTENER_API_KEY
 
@@ -15,7 +15,7 @@ const headers = {
  * Shorten a link and return the new link information.
  * @param source The link to be shortened
  */
-export const shortenerUrl = async (source: string): Promise<Link | ErrorRequest> => {
+export const shortenerUrl = async (source: string): Promise<ShortenLink | ErrorRequest> => {
     const request = await fetch("https://api.t.ly/api/v1/link/shorten", {
         method: "POST",
         headers,
@@ -23,7 +23,7 @@ export const shortenerUrl = async (source: string): Promise<Link | ErrorRequest>
             "long_url": source,
         })
     })
-    return await request.json() as Link
+    return await request.json() as ShortenLink
 }
 
 
@@ -32,10 +32,10 @@ export const shortenerUrl = async (source: string): Promise<Link | ErrorRequest>
  * 
  * @param source The shortened link from which the statistics are to be obtained
  */
-export const getStats = async (source: string): Promise<StatisticsAPI | ErrorRequest> => {
+export const getStats = async (source: string): Promise<StatisticsLink | ErrorRequest> => {
     const request = await fetch(`https://api.t.ly/api/v1/link/stats?short_url=${source}`, {
         method: "GET",
         headers
     })
-    return await request.json() as StatisticsAPI
+    return await request.json() as StatisticsLink
 }

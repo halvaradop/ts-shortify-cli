@@ -1,25 +1,56 @@
 
-export interface Link {
-    long_url: string,
-    short_id: string,
-    domain: string,
-    expire_at_datetime: Date,
-    expire_at_views: number,
-    description: string,
-    public_stats: boolean,
+export interface ExpiredLink {
+    expireAtDatetime: Date,
+    expireAtViews: number,
+}
+
+export interface LinkClickStatistics {
+    clicks: number,
+    uniqueClicks: number
+}
+
+export interface LinkCreationInfo {
+    createdAt: string,
+    updtedAt: string
+}
+
+export interface LinkExtraMetadata {
     tags: number[],
     pixels: number[]
 }
 
-export interface QuickResponse {
-    qr_code_url: string,
-    qr_code_base64: string
+export interface LinkAccess {
+    publicStats: boolean
 }
+
+export interface BaseLink {
+    longUrl: string,
+    shortUrl: string,
+    shortId: string,
+    domain: string,
+    description: string,
+}
+
+export interface QrCode {
+    qrCodeUrl: string,
+    qrCodeBase64: string
+}
+
+export interface ShortenLink extends BaseLink, ExpiredLink, LinkAccess, LinkCreationInfo { }
 
 export interface ErrorRequest {
     message: string
 }
 
-export interface StatisticsAPI extends Link, QuickResponse {
+export interface StatisticsLink extends LinkClickStatistics {
+    data: BaseLink
+}
 
+export interface CLIOptions {
+    stats: boolean,
+    update: boolean,
+    delete: boolean,
+    domain: boolean,
+    views: boolean,
+    long: boolean
 }

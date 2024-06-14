@@ -2,6 +2,8 @@
 
 import "dotenv/config"
 import { Command } from "commander"
+import { getStats } from "./request"
+import { CLIOptions } from "./types"
 
 
 
@@ -28,7 +30,10 @@ program
     .option("-d, --delete", "Delete the current link")
     .option("-dm, --domain <domain>", "Insert your custom domain")
     .option("-v, --views", "Show the views by a short link")
-    .option("-l, --long", "Show the long version of a link");
+    .option("-l, --long", "Show the long version of a link")
+    .action(async (source: string, options: CLIOptions) => {
+
+    })
 
 
 /**

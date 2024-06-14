@@ -43,7 +43,7 @@ export interface ErrorRequest {
 }
 
 export interface StatisticsLink extends LinkClickStatistics {
-    data: BaseLink
+    data: Pick<BaseLink, "longUrl" | "shortUrl"> & Pick<LinkCreationInfo, "createdAt">
 }
 
 export interface CLIOptions {
@@ -53,4 +53,24 @@ export interface CLIOptions {
     domain: boolean,
     views: boolean,
     long: boolean
+}
+
+
+export interface StatisticsAPI {
+    clicks: number,
+    unique_clicks: number,
+    total_qr_scans: number,
+    browsers: unknown,
+    countries: unknown,
+    referres: unknown,
+    platforms: unknown,
+    daily_clicks: unknown,
+    data: {
+        long_url: string,
+        smart_urls: string[],
+        short_url: string,
+        create_At: Date,
+        last_clicked: Date,
+        total_clicks_last_thirty_days: number
+    }
 }

@@ -36,6 +36,10 @@ program
         if(!checkValidUrl(source)) {
             program.error("Invalid URL, verify the structure of the link")
         }
+        if(options.stats) {
+            const statistics = await getStats(source)
+            console.log(statistics)
+        }
     })
     .showHelpAfterError(errorColor("You can execute (url --help) for additional information"))
     .configureOutput({               

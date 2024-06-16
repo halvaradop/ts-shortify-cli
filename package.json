@@ -1,7 +1,7 @@
 {
-  "name": "shortify-cli",
+  "name": "@halvaradop/shortify-cli",
   "version": "0.0.1",
-  "description": "An interactive CLI to shorten URLs on the web",
+  "description": "A command-line tool that allows you to quickly and efficiently shorten URLs, generating short and easy-to-share links",
   "private": "true",
   "main": "dist/index.js",
   "types": "dist/index.js",
@@ -11,27 +11,28 @@
   "scripts": {
     "build": "tsc",
     "dev": "tsc -w",
-    "link-cli": "npm unlink shortify-cli && chmod +x dist/index.js && npm link shortify-cli"
+    "link-cli": "npm unlink @halvaradop/shortify-cli && chmod +x dist/index.js && npm link @halvaradop/shortify-cli"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/halvaradop/ts-cli.git"
+    "url": "git+https://github.com/halvaradop/shortify-cli.git"
   },
   "keywords": [
     "typescript",
     "cli",
     "terminal",
     "commander",
-    "interactive",
+    "short links",
     "shortener",
-    "url"
+    "url",
+    "command-line tool"
   ],
   "author": "Hernan Alvarado <hernanvid123@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/halvaradop/ts-cli/issues"
+    "url": "https://github.com/halvaradop/shortify-cli/issues"
   },
-  "homepage": "https://github.com/halvaradop/ts-cli#readme",
+  "homepage": "https://github.com/halvaradop/shortify-cli#readme",
   "dependencies": {
     "commander": "^12.1.0"
   },

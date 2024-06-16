@@ -37,7 +37,7 @@ export interface QrCode {
     qrCodeBase64: string
 }
 
-export interface ShortenLink extends BaseLink, ExpiredLink, LinkAccess, LinkCreationInfo { }
+export interface ShortenLink extends BaseLink, ExpiredLink, LinkAccess, LinkCreationInfo {}
 
 export interface ErrorRequest {
     message: string
@@ -61,7 +61,7 @@ export interface CLIOptions {
 }
 
 
-export interface ShortenLinkAPI extends ToSnakeCase<Omit<BaseLink, "description">>, LinkExtraMetadata {}
+export interface ShortenLinkAPI extends ToSnakeCase<Omit<BaseLink, "description">> {}
 
 export interface StatisticsAPI extends ToSnakeCase<LinkClickStatistics> {
     total_qr_scans: number,

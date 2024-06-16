@@ -51,12 +51,13 @@ program
             if(options.shortId && !isAlphabetNumeric(options.shortId)) {
                 program.error("Invalid short ID. Verify the structure of the short ID.")
             }
-            shortenerUrl(source, {
+            const shortened = await shortenerUrl(source, {
                 domain: options.domain,
                 short_id: options.shortId,
                 description: options.description,
                 expire_at_views: parseInt(options.expireViews)
             })
+            console.log(shortened)
         }
         if(options.stats) {
             const statistics = await getStats(source)

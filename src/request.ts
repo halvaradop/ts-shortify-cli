@@ -1,5 +1,5 @@
-import { ErrorRequest, ShortenLink, ShortenOptions, StatisticsAPI, StatisticsLink } from "./types"
-import { mappingResponse, removeEmptyProperties, statisticsLinkInit } from "./utils"
+import { ErrorRequest, ShortenLink, ShortenLinkAPI, ShortenOptions, StatisticsLinkAPI, StatisticsLink } from "./types"
+import { mappingResponse, removeEmptyProperties, shortenLinkInit, statisticsLinkInit } from "./utils"
 
 
 const SHORTENER_API_KEY = process.env.SHORTENER_API_KEY
@@ -27,7 +27,8 @@ export const shortenerUrl = async (source: string, options: ShortenOptions): Pro
             ...fields
         })
     })
-    return await request.json() as ShortenLink
+    const response = await request.json() as ShortenLinkAPI
+    return mappingResponse(response, shortenLinkInit)
 }
 
 
@@ -41,6 +42,6 @@ export const getStats = async (source: string): Promise<StatisticsLink | ErrorRe
         method: "GET",
         headers
     })
-    const response = await request.json() as StatisticsAPI
+    const response = await request.json() as StatisticsLinkAPI
     return mappingResponse(response, statisticsLinkInit)
 }

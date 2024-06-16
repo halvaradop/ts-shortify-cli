@@ -37,14 +37,14 @@ export interface QrCode {
     qrCodeBase64: string
 }
 
-export interface ShortenLink extends BaseLink, ExpiredLink, LinkAccess, LinkCreationInfo {}
+export interface ShortenLink extends BaseLink, LinkCreationInfo {}
 
 export interface ErrorRequest {
     message: string
 }
 
 export interface StatisticsLink extends LinkClickStatistics {
-    data: Pick<BaseLink, "longUrl" | "shortUrl"> & Pick<LinkCreationInfo, "createdAt">
+    data: Omit<BaseLink, "shortId" | "domain"> & Pick<LinkCreationInfo, "createdAt">
 }
 
 export interface CLIOptions {
@@ -61,18 +61,8 @@ export interface CLIOptions {
 }
 
 
-export interface ShortenLinkAPI extends ToSnakeCase<Omit<BaseLink, "description">> {}
+export interface ShortenLinkAPI extends ToSnakeCase<ShortenLink> {}
 
-export interface StatisticsAPI extends ToSnakeCase<LinkClickStatistics> {
-    total_qr_scans: number,
-    data: {
-        long_url: string,
-        smart_urls: string[],
-        short_url: string,
-        create_at: Date,
-        last_clicked: Date,
-        total_clicks_last_thirty_days: number
-    }
-}
+export interface StatisticsLinkAPI extends ToSnakeCase<StatisticsLink> {}
 
 export interface ShortenOptions extends ToSnakeCase<Pick<BaseLink, "shortId" | "domain" | "description">>, ToSnakeCase<Pick<ExpiredLink, "expireAtViews">> {}

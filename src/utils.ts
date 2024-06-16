@@ -1,4 +1,4 @@
-import { StatisticsLink } from "./types"
+import { ShortenLink, StatisticsLink } from "./types"
 
 /**
  * Check if the URL received is a valid URL or it throws an error
@@ -33,13 +33,14 @@ export const errorColor = (str: string) => {
  * @param to The structure expected to be transformed.
  * @returns An object of type 'to' with the values received from the API.
  */
-export const mappingResponse = <From extends object, To extends object>(from: From, to: To): To => {
+export const mappingResponse = <From extends Record<string, any>, To extends Record<string, any>>(from: From, to: To): To => {
     return Object.keys(from).reduce((previous, key) => {
         const entryKey = underscoreToUppercase(key)
         if (entryKey in to) {
+            const isObject = typeof from[key] === "object" && from[key]
             return {
                 ...previous,
-                [entryKey]: from[key as keyof object],
+                [entryKey]: isObject ? mappingResponse(from[key], to[entryKey]) : from[key],
             }
         }
         return previous
@@ -70,7 +71,8 @@ export const statisticsLinkInit: StatisticsLink = {
     data: {
         createdAt: "",
         longUrl: "",
-        shortUrl: ""
+        shortUrl: "",
+        description: ""
     }
 }
 
@@ -129,5 +131,16 @@ export const isNumber = (sequence: string): boolean => {
  * @returns true if the sequence is alphanumeric, false otherwise.
  */
 export const isAlphabetNumeric = (sequence: string): boolean => {
-    return new RegExp("^[A-Za-z0-9]{1,}$").test(sequence)
+    return new RegExp("^[A-Za-z0-9\-\_]{1,}$").test(sequence)
+}
+
+
+export const shortenLinkInit: ShortenLink = {
+    domain: "",
+    createdAt: "",
+    description: "",
+    longUrl: "",
+    shortId: "",
+    shortUrl: "",
+    updtedAt: ""
 }

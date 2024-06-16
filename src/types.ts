@@ -1,3 +1,4 @@
+import { ToSnakeCase } from "./utility-types"
 
 export interface ExpiredLink {
     expireAtDatetime: Date,
@@ -49,28 +50,28 @@ export interface StatisticsLink extends LinkClickStatistics {
 export interface CLIOptions {
     stats: boolean,
     update: boolean,
-    delete: boolean,
-    domain: boolean,
+    remove: boolean,
+    domain: string,
     views: boolean,
-    long: boolean
+    long: boolean,
+    create: boolean,
+    description: string,
+    shortId: string,
+    expireViews: string
 }
 
+export interface ShortenLinkAPI extends ToSnakeCase<Omit<BaseLink, "description">>, LinkExtraMetadata {}
 
-export interface StatisticsAPI {
-    clicks: number,
-    unique_clicks: number,
+export interface StatisticsAPI extends ToSnakeCase<LinkClickStatistics> {
     total_qr_scans: number,
-    browsers: unknown,
-    countries: unknown,
-    referres: unknown,
-    platforms: unknown,
-    daily_clicks: unknown,
     data: {
         long_url: string,
         smart_urls: string[],
         short_url: string,
-        create_At: Date,
+        create_at: Date,
         last_clicked: Date,
         total_clicks_last_thirty_days: number
     }
 }
+
+export interface ShortenOptions extends ToSnakeCase<Pick<BaseLink, "shortId" | "domain" | "description">>, ToSnakeCase<Pick<ExpiredLink, "expireAtViews">> {}

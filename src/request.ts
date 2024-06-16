@@ -1,5 +1,5 @@
-import { ErrorRequest, ShortenLink, StatisticsAPI, StatisticsLink } from "./types"
-import { mappingResponse, statisticsLinkInit } from "./utils"
+import { ErrorRequest, ShortenLink, ShortenOptions, StatisticsAPI, StatisticsLink } from "./types"
+import { mappingResponse, removeEmptyProperties, statisticsLinkInit } from "./utils"
 
 const SHORTENER_API_KEY = process.env.SHORTENER_API_KEY
 
@@ -16,12 +16,14 @@ const headers = {
  * Shorten a link and return the new link information.
  * @param source The link to be shortened
  */
-export const shortenerUrl = async (source: string): Promise<ShortenLink | ErrorRequest> => {
+export const shortenerUrl = async (source: string, options: ShortenOptions): Promise<ShortenLink | ErrorRequest> => {
+    const fields = removeEmptyProperties(options)
     const request = await fetch("https://api.t.ly/api/v1/link/shorten", {
         method: "POST",
         headers,
         body: JSON.stringify({
             "long_url": source,
+            ...fields
         })
     })
     return await request.json() as ShortenLink

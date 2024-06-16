@@ -2,7 +2,7 @@
   "name": "@halvaradop/shortify-cli",
   "version": "0.0.1",
   "description": "A command-line tool that allows you to quickly and efficiently shorten URLs, generating short and easy-to-share links",
-  "private": "true",
+  "private": false,
   "main": "dist/index.js",
   "types": "dist/index.js",
   "bin": {

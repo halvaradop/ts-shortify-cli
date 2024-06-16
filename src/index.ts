@@ -2,7 +2,7 @@
 
 import "dotenv/config"
 import { Command } from "commander"
-import { getStats, shortenerUrl } from "./request"
+import { getStats, removeUrl, shortenerUrl } from "./request"
 import { CLIOptions } from "./types"
 import { checkValidDomain, checkValidUrl, errorColor, isAlphabetNumeric, isNumber } from "./utils"
 
@@ -62,6 +62,9 @@ program
         if(options.stats) {
             const statistics = await getStats(source)
             console.log(statistics)
+        } else if(options.remove) {
+            const remove = await removeUrl(source)
+            console.log(remove)
         }
     })
     .showHelpAfterError(errorColor("You can execute (url --help) for additional information"))

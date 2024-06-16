@@ -45,3 +45,21 @@ export const getStats = async (source: string): Promise<StatisticsLink | ErrorRe
     const response = await request.json() as StatisticsLinkAPI
     return mappingResponse(response, statisticsLinkInit)
 }
+
+
+/**
+ * Remove a URL from the user's history
+ * 
+ * @param source The URL to be removed
+ * @returns A message to notify that the URL was deleted.
+ */
+export const removeUrl = async (source: string): Promise<string> => {
+    await fetch("https://api.t.ly/api/v1/link", {
+        method: "DELETE",
+        headers,
+        body: JSON.stringify({
+            "short_url": source
+        })
+    })
+    return "The link has been successfully removed"
+}

@@ -60,6 +60,7 @@ export interface CLIOptions {
     expireViews: string
 }
 
+
 export interface ShortenLinkAPI extends ToSnakeCase<Omit<BaseLink, "description">>, LinkExtraMetadata {}
 
 export interface StatisticsAPI extends ToSnakeCase<LinkClickStatistics> {

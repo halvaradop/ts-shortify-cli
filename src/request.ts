@@ -1,6 +1,7 @@
 import { ErrorRequest, ShortenLink, ShortenOptions, StatisticsAPI, StatisticsLink } from "./types"
 import { mappingResponse, removeEmptyProperties, statisticsLinkInit } from "./utils"
 
+
 const SHORTENER_API_KEY = process.env.SHORTENER_API_KEY
 
 /**

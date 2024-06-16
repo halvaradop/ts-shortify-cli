@@ -73,3 +73,61 @@ export const statisticsLinkInit: StatisticsLink = {
         shortUrl: ""
     }
 }
+
+
+/**
+ * Removes properties with empty values from an object to clean it up. It verifies if 
+ * the values are:
+ *  - an empty string
+ *  - null
+ *  - undefined
+ *  - an empty array
+ *  - an empty object
+ * 
+ * @param entry An object to clean up by removing empty properties.
+ * @returns The cleaned object.
+ */
+export const removeEmptyProperties = <T extends Record<string, any>>(entry: T) => {
+    for (const key in entry) {
+        const pairValue = entry[key]
+        const isArray = Array.isArray(pairValue)
+        const isObject = pairValue && typeof pairValue === "object" && !isArray
+        if ((!pairValue) || pairValue === "" || (isArray && !pairValue.length) || (isObject && !Object.keys(pairValue).length)) {
+            delete entry[key]
+        }
+    }
+    return entry
+}
+
+
+/**
+ * Checks if the domain name is valid.
+ * 
+ * @param domain - The domain name to be verified.
+ * @returns true if the domain name is valid, false otherwise.
+ */
+export const checkValidDomain = (domain: string): boolean => {
+    return new RegExp("^([a-z0-9]+(-[a-z0-9]+)*\.)+[a-z]{2,}$").test(domain)
+}
+
+
+/**
+ * Checks if a sequence of characters is a number.
+ * 
+ * @param sequence - The sequence of characters to be verified.
+ * @returns true if the sequence is a number, false otherwise.
+ */
+export const isNumber = (sequence: string): boolean => {
+    return new RegExp("^[0-9]+$").test(sequence)
+}
+
+
+/**
+ * Checks if a sequence of characters is alphanumeric.
+ * 
+ * @param sequence - The sequence of characters to be verified.
+ * @returns true if the sequence is alphanumeric, false otherwise.
+ */
+export const isAlphabetNumeric = (sequence: string): boolean => {
+    return new RegExp("^[A-Za-z0-9]{1,}$").test(sequence)
+}

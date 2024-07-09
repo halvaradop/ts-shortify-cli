@@ -19,16 +19,20 @@ const headers = {
  */
 export const shortenerUrl = async (source: string, options: ShortenOptions): Promise<ShortenLink | ErrorRequest> => {
     const fields = removeEmptyProperties(options)
-    const request = await fetch("https://api.t.ly/api/v1/link/shorten", {
-        method: "POST",
-        headers,
-        body: JSON.stringify({
-            "long_url": source,
-            ...fields
+    try {
+        const request = await fetch("https://api.t.ly/api/v1/link/shorten", {
+            method: "POST",
+            headers,
+            body: JSON.stringify({
+                "long_url": source,
+                ...fields
+            })
         })
-    })
-    const response = await request.json() as ShortenLinkAPI
-    return mappingResponse(response, shortenLinkInit)
+        const response = await request.json() as ShortenLinkAPI
+        return mappingResponse(response, shortenLinkInit)
+    } catch(error) {
+        return { message: "An error has occurred" }
+    }
 }
 
 
@@ -38,12 +42,16 @@ export const shortenerUrl = async (source: string, options: ShortenOptions): Pro
  * @param source The shortened link from which the statistics are to be obtained
  */
 export const getStats = async (source: string): Promise<StatisticsLink | ErrorRequest> => {
-    const request = await fetch(`https://api.t.ly/api/v1/link/stats?short_url=${source}`, {
-        method: "GET",
-        headers
-    })
-    const response = await request.json() as StatisticsLinkAPI
-    return mappingResponse(response, statisticsLinkInit)
+    try {
+        const request = await fetch(`https://api.t.ly/api/v1/link/stats?short_url=${source}`, {
+            method: "GET",
+            headers
+        })
+        const response = await request.json() as StatisticsLinkAPI
+        return mappingResponse(response, statisticsLinkInit)
+    } catch(error) {
+        return { message: "An error has occurred" }
+    }
 }
 
 
@@ -54,12 +62,16 @@ export const getStats = async (source: string): Promise<StatisticsLink | ErrorRe
  * @returns A message to notify that the URL was deleted.
  */
 export const removeUrl = async (source: string): Promise<string> => {
-    await fetch("https://api.t.ly/api/v1/link", {
-        method: "DELETE",
-        headers,
-        body: JSON.stringify({
-            "short_url": source
+    try {
+        await fetch("https://api.t.ly/api/v1/link", {
+            method: "DELETE",
+            headers,
+            body: JSON.stringify({
+                "short_url": source
+            })
         })
-    })
-    return "The link has been successfully removed"
+        return "The link has been successfully removed"
+    } catch(error) {
+        return "An error has occurred"
+    }
 }

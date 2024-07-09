@@ -32,11 +32,6 @@ export interface BaseLink {
     description: string,
 }
 
-export interface QrCode {
-    qrCodeUrl: string,
-    qrCodeBase64: string
-}
-
 export interface ShortenLink extends BaseLink, LinkCreationInfo {}
 
 export interface ErrorRequest {

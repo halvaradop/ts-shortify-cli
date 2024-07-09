@@ -1,4 +1,4 @@
-import { ShortenLink, StatisticsLink } from "./types"
+import type { ShortenLink, StatisticsLink } from "./types"
 
 /**
  * Check if the URL received is a valid URL or it throws an error

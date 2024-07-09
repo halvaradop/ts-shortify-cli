@@ -1,4 +1,4 @@
-import { ToSnakeCase } from "./utility-types"
+import type { ToSnakeCase } from "./utility-types"
 
 export interface ExpiredLink {
     expireAtDatetime: Date,

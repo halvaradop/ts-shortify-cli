@@ -3,7 +3,7 @@
 import "dotenv/config"
 import { Command } from "commander"
 import { getStats, removeUrl, shortenerUrl } from "./request"
-import { CLIOptions } from "./types"
+import type { CLIOptions } from "./types"
 import { checkValidDomain, checkValidUrl, errorColor, isAlphabetNumeric, isNumber } from "./utils"
 
 

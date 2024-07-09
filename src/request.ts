@@ -1,4 +1,4 @@
-import { ErrorRequest, ShortenLink, ShortenLinkAPI, ShortenOptions, StatisticsLinkAPI, StatisticsLink } from "./types"
+import type { ErrorRequest, ShortenLink, ShortenLinkAPI, ShortenOptions, StatisticsLinkAPI, StatisticsLink } from "./types"
 import { mappingResponse, removeEmptyProperties, shortenLinkInit, statisticsLinkInit } from "./utils"
 
 

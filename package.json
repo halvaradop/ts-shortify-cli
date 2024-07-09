@@ -11,7 +11,8 @@
   "scripts": {
     "build": "tsc",
     "dev": "tsc -w",
-    "link-cli": "npm unlink @halvaradop/shortify-cli && chmod +x dist/index.js && npm link @halvaradop/shortify-cli"
+    "link-cli": "npm unlink @halvaradop/shortify-cli && chmod +x dist/index.js && npm link @halvaradop/shortify-cli",
+    "restart": "rm -rf node_modules dist && npm unlink . && npm unlink -g . && npm unlink -g @halvaradop/shortify-cli && npm install && npm link"
   },
   "repository": {
     "type": "git",

@@ -4,7 +4,6 @@
   "description": "A command-line tool that allows you to quickly and efficiently shorten URLs, generating short and easy-to-share links",
   "private": false,
   "main": "dist/index.js",
-  "types": "dist/index.js",
   "bin": {
     "shortify": "dist/index.js"
   },
@@ -50,14 +49,20 @@
   ],
   "prettier": {
     "tabWidth": 4,
+    "semi": false,
     "useTabs": true,
     "singleQuote": false,
     "printWidth": 130,
     "overrides": [
       {
-        "files": "*.json",
+        "files": [
+          "*.json",
+          "README",
+          "*.yaml"
+        ],
         "options": {
-          "tabWidth": 2
+          "tabWidth": 2,
+          "useTabs": false
         }
       }
     ]

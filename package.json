@@ -4,7 +4,6 @@
   "description": "A command-line tool that allows you to quickly and efficiently shorten URLs, generating short and easy-to-share links",
   "private": false,
   "main": "dist/index.js",
-  "types": "dist/index.js",
   "bin": {
     "shortify": "dist/index.js"
   },
@@ -12,7 +11,9 @@
     "build": "tsc",
     "dev": "tsc -w",
     "link-cli": "npm unlink @halvaradop/shortify-cli && chmod +x dist/index.js && npm link @halvaradop/shortify-cli",
-    "restart": "rm -rf node_modules dist && npm unlink . && npm unlink -g . && npm unlink -g @halvaradop/shortify-cli && npm install && npm link"
+    "restart": "rm -rf node_modules dist && npm unlink . && npm unlink -g . && npm unlink -g @halvaradop/shortify-cli && npm install && npm link",
+    "format": "npx prettier --write .",
+    "format:check": "npx prettier --check ."
   },
   "repository": {
     "type": "git",
@@ -40,9 +41,30 @@
   "devDependencies": {
     "@types/node": "^20.14.2",
     "dotenv": "^16.4.5",
+    "prettier": "^3.3.3",
     "typescript": "^5.4.5"
   },
   "files": [
     "dist"
-  ]
+  ],
+  "prettier": {
+    "tabWidth": 4,
+    "semi": false,
+    "useTabs": true,
+    "singleQuote": false,
+    "printWidth": 130,
+    "overrides": [
+      {
+        "files": [
+          "*.json",
+          "README",
+          "*.yaml"
+        ],
+        "options": {
+          "tabWidth": 2,
+          "useTabs": false
+        }
+      }
+    ]
+  }
 }

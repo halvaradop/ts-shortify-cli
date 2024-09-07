@@ -11,7 +11,12 @@ import { checkValidDomain, checkValidUrl, errorColor, isAlphabetNumeric, isNumbe
  */
 const program = new Command()
 
-program.name("shortify").description("Shorten your favorite URL using the CLI.").version("0.0.1").usage("<source-url> [options]")
+// prettier-ignore
+program
+	.name("shortify")
+	.description("Shorten your favorite URL using the CLI.")
+	.version("0.0.1")
+	.usage("<source-url> [options]")
 
 /**
  * Configuration of CLI options and arguments

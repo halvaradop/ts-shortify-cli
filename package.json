@@ -13,7 +13,9 @@
     "link-cli": "npm unlink @halvaradop/shortify-cli && chmod +x dist/index.js && npm link @halvaradop/shortify-cli",
     "restart": "rm -rf node_modules dist && npm unlink . && npm unlink -g . && npm unlink -g @halvaradop/shortify-cli && npm install && npm link",
     "format": "npx prettier --write .",
-    "format:check": "npx prettier --check ."
+    "format:check": "npx prettier --check .",
+    "test": "vitest --run",
+    "test:watch": "vitest"
   },
   "repository": {
     "type": "git",
@@ -42,7 +44,8 @@
     "@types/node": "^20.14.2",
     "dotenv": "^16.4.5",
     "prettier": "^3.3.3",
-    "typescript": "^5.4.5"
+    "typescript": "^5.4.5",
+    "vitest": "^2.0.5"
   },
   "files": [
     "dist"

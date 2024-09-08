@@ -23,16 +23,16 @@ program
  */
 program
 	.argument("<source-url>", "URL to shorten")
-	.option("-s, --stats", "Show the statistics for a URL")
-	.option("-u, --update", "Update the current link")
-	.option("-r, --remove", "Remove the current link")
-	.option("-d, --domain <domain>", "Specify a custom domain")
-	.option("-v, --views", "Show the views of a short link")
-	.option("-l, --long", "Show the long version of a link")
-	.option("-c, --create", "Create a shortened link", true)
-	.option("-i, --short-id <short-id>", "Specify a custom identifier for the link")
-	.option("--desc <description>", "Add a description associated with the link")
-	.option("--expire-views <views>", "Set a limit on the number of views before the link expires")
+	.option("-s, --stats", "show the statistics for a URL")
+	.option("-u, --update", "update the current link")
+	.option("-r, --remove", "remove the current link")
+	.option("-d, --domain <domain>", "specify a custom domain")
+	.option("-v, --views", "show the views of a short link")
+	.option("-l, --long", "show the long version of a link")
+	.option("-c, --create", "create a shortened link", true)
+	.option("-i, --short-id <short-id>", "specify a custom identifier for the link")
+	.option("--desc <description>", "add a description associated with the link")
+	.option("--expire-views <views>", "set a limit on the number of views before the link expires")
 	.action(async (source: string, options: CLIOptions) => {
 		if (!checkValidUrl(source)) {
 			program.error("Invalid URL, verify the structure of the link")
@@ -63,7 +63,7 @@ program
 			console.log(remove)
 		}
 	})
-	.showHelpAfterError(errorColor("You can execute (url --help) for additional information"))
+	.showHelpAfterError(errorColor("You can execute (shortify --help) for additional information"))
 	.configureOutput({
 		writeErr: (error: string) => {
 			process.stdout.write(`${errorColor("[ERROR]:")} ${error}`)
